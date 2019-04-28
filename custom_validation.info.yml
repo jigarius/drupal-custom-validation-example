@@ -1,0 +1,9 @@
+name: 'Custom: Validation'
+type: module
+description: 'An example module demonstrating the use of Drupal Entity Validation API.'
+author: jigarius
+core: 8.x
+version: 1.0
+
+dependencies:
+  - node

@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * Contains hooks and callbacks for custom_validation.module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function custom_validation_entity_base_field_info_alter(
+  array &$fields,
+  EntityTypeInterface $entity_type,
+  $bundle
+) {
+  // You can add constraints to base fields of entities defined by other
+  // modules using this hook.
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function custom_validation_entity_bundle_field_info_alter(
+  array &$fields,
+  EntityTypeInterface $entity_type,
+  $bundle
+) {
+  // You can add constraints to bundle-specific fields of entities defined by
+  // other modules using this hook. For example, the code below adds a
+  // constraint to the "field_image" of "article" nodes.
+  if (
+    $entity_type->id() === 'node' &&
+    $bundle === 'article' &&
+    isset($fields['field_image'])
+  ) {
+    $fields['field_image']->addConstraint('NotEmptyWhenPublished', []);
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function custom_validation_entity_type_alter(array &$entity_types) {
+  // You can add constraints to an entire entity type using this hook. For
+  // example, the code below adds a constraint to the "user" entity. The
+  // constraint makes sure that the user provides at least field_phone_fixed
+  // or field_phone_mobile.
+  if (isset($entity_types['user'])) {
+    $entity_types['user']->addConstraint('PhoneNumberRequired');
+  }
+}
