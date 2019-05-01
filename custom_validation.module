@@ -8,15 +8,24 @@
 use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
- * Implements hook_entity_bundle_field_info_alter().
+ * Implements hook_entity_base_field_info_alter().
  */
 function custom_validation_entity_base_field_info_alter(
   array &$fields,
-  EntityTypeInterface $entity_type,
-  $bundle
+  EntityTypeInterface $entity_type
 ) {
   // You can add constraints to base fields of entities defined by other
   // modules using this hook.
+  // Here's some sample code for how this might work.
+  if (FALSE) {
+    // With the code below, you can check the URL alias of an entity.
+    $fields['path']->addPropertyConstraints('alias', [
+      'ConstraintID' => [
+        'Option 1' => 'foo',
+        'Option 2' => 'bar',
+      ],
+    ]);
+  }
 }
 
 /**
