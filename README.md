@@ -1,7 +1,7 @@
 # Drupal Entity Validation API Example
 
 This code was written to support the article [Implementing Custom Validation
-Constraints for Entities in Drupal 8 in Drupal](https://jigarius.com/blog/implementing-custom-validation-constraints-entities-drupal-8) on
+Constraints for Entities in Drupal 8 in Drupal](https://jigarius.com/blog/drupal-entity-validation-api) on
 [jigarius.com](http://jigarius.com/).
 
 ## See the code in action
